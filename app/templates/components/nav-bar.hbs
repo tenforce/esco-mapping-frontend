@@ -1,0 +1,81 @@
+<div class="left">
+  {{#if areTaxonomiesSelected}}
+    {{#if isConceptSelected}}
+      {{#link-to 'concepts.browse.show' effort.id concept.id}}
+          <div class="logo">
+              <img src="assets/logo.png" alt="esco logo">
+          </div>
+
+          <div class="title" title="return to workspace">
+              <h2>Mapping</h2>
+          </div>
+      {{/link-to}}
+    {{else}}
+      {{#link-to 'concepts.browse' effort.id}}
+          <div class="logo">
+              <img src="assets/logo.png" alt="esco logo">
+          </div>
+
+          <div class="title" title="return to workspace">
+              <h2>Mapping</h2>
+          </div>
+      {{/link-to}}
+    {{/if}}
+  {{else}}
+    {{#link-to 'index'}}
+        <div class="logo">
+            <img src="assets/logo.png" alt="esco logo">
+        </div>
+
+        <div class="title" title="return to workspace">
+            <h2>Mapping</h2>
+        </div>
+    {{/link-to}}
+  {{/if}}
+</div>
+
+<div class="right">
+  {{#if (is-pending kpiBars)}}
+  {{else}}
+    {{#if areTaxonomiesSelected}}
+      {{#if isUserAdmin}}
+        {{#link-to "concepts.admin" effort.id display="dashboard" title="go to dashboard" class="link-dashboard"}}
+          {{kpi-bar label=from.preflabel value=(await mappedConceptsResultFrom) total=(await totalConceptsResultFrom) classNames="progress"}}
+        {{/link-to}}
+        {{#link-to "concepts.admin" effort.id display="dashboard" title="go to dashboard" class="link-dashboard"}}
+          {{kpi-bar label=to.preflabel value=(await mappedConceptsResultTo) total=(await totalConceptsResultTo) classNames="progress"}}
+        {{/link-to}}
+      {{else}}
+        <div class="link-dashboard">
+          {{kpi-bar label=from.preflabel value=(await mappedConceptsResultFrom) total=(await totalConceptsResultFrom) classNames="progress"}}
+        </div>
+        <div class="link-dashboard">
+          {{kpi-bar label=to.preflabel value=(await mappedConceptsResultTo) total=(await totalConceptsResultTo) classNames="progress"}}
+        </div>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+
+    <div class="user-nav">
+    <a {{action 'toggleMenu'}} class="user-nav-btn {{if menuClosed "closed"}}" title="view user settings">
+      <span class="avatar"></span>
+      <span class="arrow">
+        <i class="fa fa-angle-down"></i>
+      </span>
+    </a>
+    <ul class="{{if menuClosed "closed"}}">
+      {{#if session.isAuthenticated}}
+        <li {{action 'closeMenu'}}>{{#link-to 'index' tagName="button"}}Select mapping effort{{/link-to}}</li>
+        <li {{action 'closeMenu'}}>{{#link-to 'profile' tagName="button"}}{{currentUser.user.name}}{{/link-to}}</li>
+        {{#if isUserAdmin}}
+          {{#if (and from to)}}
+            <li {{action 'closeMenu'}}>{{#link-to 'concepts.admin' effort.id tagName="button"}}Extra{{/link-to}}</li>
+          {{/if}}
+        {{/if}}
+      <li {{action 'closeMenu'}}>{{mu-logout tagName=""}}</li>
+      {{else}}
+      <li {{action 'closeMenu'}}>{{#link-to 'sign-in' tagName=""}}Sign in{{/link-to}}</li>
+      {{/if}}
+    </ul>
+  </div>
+</div>

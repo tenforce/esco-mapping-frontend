@@ -1,0 +1,19 @@
+<div class="title">
+  {{taxonomy.preflabel}} to {{compared.preflabel}}
+</div>
+{{ember-chart type="Pie" data=(await pieChartData) options=chartOptions width=200 height=200 legend=false}}
+<div class="legend">
+  {{#each (await pieChartData) as |row|}}
+      <div class="row">
+          <div class="color" style="background-color:{{row.color}};">
+          </div>
+          <div class="label">
+            {{row.label}}
+          </div>
+          <div class="value">
+            {{row.value}}
+          </div>
+      </div>
+  {{/each}}
+</div>
+

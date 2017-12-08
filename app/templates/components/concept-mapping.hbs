@@ -1,0 +1,21 @@
+<div class="description">
+  <div class="prefLabel">
+    {{#if (is-pending other.preflabel)}}
+      <i class="fa fa-circle-o-notch fa-spin"></i>
+    {{else}}
+    {{#link-to 'concepts.browse.show' other.id (query-params inverted=inverseInverted) title="Go to this concept"}}
+      {{await other.preflabel}}
+    {{/link-to}}
+    {{/if}}
+  </div>
+  <div class="mapping-types">
+    {{#each (await mappingTypes) as |type|}}
+      <span class="match {{type.name}} {{if (eq type.match mapping.matchType) 'selected'}}" {{action "selectMappingType" mapping type}}>{{type.label}}</span>
+    {{/each}}
+  </div>
+</div>
+<div class="buttons">
+  {{#each mappingActions as |mappingAction|}}
+    {{mapping-status mappingAction=mappingAction user=user mapping=mapping}}
+  {{/each}}
+</div>

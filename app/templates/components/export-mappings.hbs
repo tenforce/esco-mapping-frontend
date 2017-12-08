@@ -1,0 +1,19 @@
+<ul class="tab-nav">
+  <!-- <li>Classification</li> -->
+    <li class="active">Export mapping</li>
+</ul>
+
+<div class="mapping-table">
+    <div class="select">
+      <p class="info-message">Use the button below to download the mappings in a CSV format, with three columns: the origin of the mapping as a URI, the target of the mapping as a URI and the kind of mapping according to the <a href="https://www.w3.org/TR/skos-reference/" target="_blank">SKOS taxonomy</a>.</p>
+      <!--
+      <div class="ember-power-select ember-view ember-basic-dropdown">
+          <div class="ember-basic-dropdown-trigger ember-power-select-trigger" aria-expanded="false" aria-pressed="false" aria-controls="ember-basic-dropdown-content-ember1040">
+          csv
+            <span class="ember-power-select-status-icon"></span>
+          </div>
+      </div>
+      -->
+    </div>
+    <a class="btn download" href="/export-mapping/export?format=text/csv&uuid={{effort.id}}" download="mappings.csv">Download</a>
+</div>

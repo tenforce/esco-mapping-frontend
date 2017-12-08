@@ -1,0 +1,15 @@
+<div class="title">
+  <h3>Map Concept to <span>{{taxonomy.preflabel}}</span></h3>
+</div>
+<div class="action-selector">
+  <ul>
+    <li class="{{if (eq selectedAction "browse") "selected"}}"{{action "selectAction" "browse"}}>Browse</li>
+    <li class="{{if (eq selectedAction "suggestions") "selected"}}"{{action "selectAction" "suggestions"}}>Suggestions</li>
+  </ul>
+</div>
+{{#if (eq selectedAction "browse")}}
+  {{taxonomy-browser taxonomy=taxonomy activateItem="activateItem"
+  baseConfig=fullConfig filterTypes=filters searchPlaceholder="Search / filter..."}}
+{{else if (eq selectedAction "suggestions")}}
+  {{concept-suggestions concept=concept acceptSuggestion="acceptSuggestion" rejectSuggestion="rejectSuggestion"}}
+{{/if}}

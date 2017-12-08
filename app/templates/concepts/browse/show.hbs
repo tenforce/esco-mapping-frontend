@@ -1,0 +1,34 @@
+<div class="right">
+	<div class="concept-detail">
+    <div class="concept-info">
+      <div class="status {{mappingStatusClass}}" title="switch status">
+        {{#if (is-pending targetMappingStatus)}}
+          <div class="loading">
+            <i class="fa fa-circle-o-notch fa-spin"></i>
+          </div>
+        {{else}}
+          {{#power-select options=mappingStatusses selected=mappingStatus onchange=(action "changeStatus") as |mappingStatus|}}
+            {{mappingStatus}}
+          {{/power-select}}
+        {{/if}}
+      </div>
+      <div class="concept-description {{if collapsed "collapsed" "open"}}">
+        {{concept-description concept=concept config=conceptDescription tagName=conceptDescriptionTagName
+        classNames=conceptDescriptionClassNames}}
+      </div>
+      <div class="btn-toggle-more {{if collapsed "collapsed" "open"}}" {{action "toggleDetail"}} title= {{toggleTooltip}}>
+          <i class="fa fa-angle-{{if collapsed "down" "up"}}"></i>
+      </div>
+      {{#if model.concept.isMappable}}
+	      {{concept-mappings concept=model.concept}}
+      {{/if}}
+    </div>
+    {{#if model.concept.isMappable}}
+	    {{map-concept concept=model.concept createMapping="createMapping" acceptSuggestion="acceptSuggestion" rejectSuggestion="rejectSuggestion"
+	    organization=model.organization}}
+    {{/if}}
+	</div>
+	<div class="sidebar">
+    {{comments-wrapper about=model.concept.id}}
+	</div>
+</div>

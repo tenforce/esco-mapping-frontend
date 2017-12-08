@@ -1,0 +1,50 @@
+<div class="admin-area">
+    <div class="left">
+        <ul class="menu">
+            <li class="dashboard {{if (eq display 'dashboard') 'selected'}}" {{action "toDashboard"}}>
+                Dashboard
+            </li>
+            <li class="import-taxonomy {{if (eq display 'import-taxonomy') 'selected'}}" {{action "toImportTaxonomy"}}>
+                Import taxonomy
+            </li>
+            <li class="import-mapping {{if (eq display 'import-mapping') 'selected'}}" {{action "toImportMapping"}}>
+                Import mapping
+            </li>
+            <li class="export {{if (eq display 'export-mapping') 'selected'}}" {{action "toExportMapping"}}>
+                Export mapping
+            </li>
+        </ul>
+    </div>
+    <div class="right">
+        <div class="admin-detail">
+            {{#if (eq display 'dashboard')}}
+                <div class="mapping-dashboard">
+                    {{mapping-dashboard}}
+                </div>
+            {{/if}}
+            {{#if (eq display 'import-taxonomy')}}
+                <div class="import-concepts">
+                    {{esco-import-concepts importerEndpoint="/import/taxonomy" startingMessage="Select a taxonomy file to import..."
+                    toggleValidations="toggleValidations" dataImported="dataImported" graphIdReceived="graphIdReceived" mappingEffort=effort}}
+                    {{#if showTable}}
+                      {{validation-addon showTable=showTable platform="mapping" graphid=graphid}}
+                    {{/if}}
+                </div>
+            {{/if}}
+            {{#if (eq display 'import-mapping')}}
+                <div class="import-concepts">
+                    {{esco-import-concepts importerEndpoint="/import/mapping" startingMessage="Select a mapping file to import..."
+                    toggleValidations="toggleValidations" dataImported="dataImported" graphIdReceived="graphIdReceived"  mappingEffort=effort}}
+                    {{#if showTable}}
+                      {{validation-addon showTable=showTable platform="mapping" graphid=graphid}}
+                    {{/if}}
+                </div>
+            {{/if}}
+            {{#if (eq display 'export-mapping')}}
+                <div class="export-mapping">
+                    {{export-mappings}}
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

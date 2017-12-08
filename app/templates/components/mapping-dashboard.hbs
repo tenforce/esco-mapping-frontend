@@ -1,0 +1,68 @@
+<div class="chart-area">
+    <div class="section">
+        <div class="title">
+            Type of mapping
+        </div>
+        <div class="body">
+          {{mapping-types-chart taxonomy=taxfrom compared=taxto effort=effort}}
+        </div>
+    </div>
+</div>
+<div class="bars-area">
+    <div class="section">
+        <div class="title">
+            Completed concepts
+        </div>
+        <div class="body">
+            <div class="completion-bar">
+              {{kpi-bar label=completedLeftLabel value=(await approvedConceptsFrom) total=(await totalMappableConceptsFrom)}}
+              {{!--#link-to "concepts.browse" taxfrom.id taxto.id (query-params filter=toCompleteFilter inverted="false")}}Show what is left to complete{{/link-to--}}
+            </div>
+            <div class="completion-bar">
+              {{kpi-bar label=completedRightLabel value=(await approvedConceptsTo) total=(await totalMappableConceptsTo)}}
+              {{!--#link-to "concepts.browse" taxfrom.id taxto.id (query-params filter=toCompleteFilter inverted="true")}}Show what is left to complete{{/link-to--}}
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            Approved mappings
+        </div>
+        <div class="body">
+            <div class="completion-bar full-width">
+              {{kpi-bar label="Approved mappings" value=(await approvedMappingsFrom) total=(await totalMappingsFrom)}}
+              {{!--#link-to "concepts.browse" taxfrom.id taxto.id (query-params filter=toApproveFilter inverted="false")}}Show what is left to approve{{/link-to--}}
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            Mapped/unmapped concepts
+        </div>
+        <div class="body">
+            <div class="completion-bar">
+              {{kpi-bar label=mappedLeftLabel value=(await mappedConceptsFrom) total=(await totalMappableConceptsFrom)}}
+              {{!--#link-to "concepts.browse" taxfrom.id taxto.id (query-params filter=toMapFilter inverted="false")}}Show what is left to map{{/link-to--}}
+            </div>
+            <div class="completion-bar">
+              {{kpi-bar label=mappedRightLabel value=(await mappedConceptsTo) total=(await totalMappableConceptsTo)}}
+              {{!--#link-to "concepts.browse" taxfrom.id taxto.id (query-params filter=toMapFilter inverted="true")}}Show what is left to map{{/link-to--}}
+            </div>
+        </div>
+    </div>
+  <div class="section">
+    <div class="title">
+      Concepts with more than one exact match
+    </div>
+    <div class="body">
+      <div class="completion-bar">
+        {{kpi-bar label=exactLeftLabel value=(await exactConceptsFrom) total=(await totalMappableConceptsFrom)}}
+        {{!--#link-to "concepts.browse" taxfrom.id taxto.id (query-params filter=toMapFilter inverted="false")}}Show what is left to map{{/link-to--}}
+      </div>
+      <div class="completion-bar">
+        {{kpi-bar label=exactRightLabel value=(await exactConceptsTo) total=(await totalMappableConceptsTo)}}
+        {{!--#link-to "concepts.browse" taxfrom.id taxto.id (query-params filter=toMapFilter inverted="true")}}Show what is left to map{{/link-to--}}
+      </div>
+    </div>
+  </div>
+</div>

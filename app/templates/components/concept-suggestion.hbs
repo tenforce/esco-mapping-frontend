@@ -1,0 +1,28 @@
+{{#if shouldDisplay}}
+<li>
+    <div class="aet-node">
+        <div class="title">
+            <label>{{suggestion.label}}</label>
+            {{#if mappingExist}}
+                <div class="mapping-status mapped" title="this suggestion has been accepted"></div>
+            {{/if}}
+            <div class="actions">
+                <button type="button" name="accept" title={{titleAcceptButton}} disabled={{mappingExist}} class="add {{if mappingExist "active"}}" {{action "acceptSuggestion" suggestion}}>
+                    <i class="fa fa-plus" aria-hidden="true"/>
+                </button>
+                <button type="button" name="reject" title={{titleHideButton}} disabled={{mappingExist}} class="hide {{if hidden "active"}} {{if mappingExist "mapped"}}" {{action "rejectSuggestion" suggestion}}>
+                    <i class="fa fa-eye-slash" aria-hidden="true"/>
+                </button>
+            </div>
+        </div>
+        <div class="score">
+            {{suggestion.roundedCombinedScore}}
+            <!--
+            {{!suggestion.roundedTextualScore}}
+            {{!suggestion.roundedContextualScore}}
+            {{!suggestion.roundedFloodingScore}}
+            -->
+        </div>
+    </div>
+</li>
+{{/if}}

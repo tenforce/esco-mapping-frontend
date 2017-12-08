@@ -1,0 +1,41 @@
+<div class="row effort-label">
+  <label>Label of the mapping effort:</label> {{input value=effortLabel placeholder="type here"}}
+</div>
+<div class="row">
+  <label>Language to base the suggestions upon:</label>
+  {{#power-select disabled=false renderInPlace=true options=locales searchField="title" selected=selectedLocale onchange=(action "selectLocale") as |locale|}}
+    {{locale.title}}
+  {{/power-select}}
+</div>
+<div class="row">
+  <label>From:</label>
+  <div class="select">
+    {{#power-select disabled=false renderInPlace=true options=sortedSourceTaxonomies searchField="preflabel" selected=sourceTaxonomy onchange=( action "selectSourceTaxonomy") as |taxonomy|}}
+      {{taxonomy.preflabel}}
+      {{#if taxonomy.version}}
+  - {{taxonomy.version}}
+{{/if}}
+    {{/power-select}}
+  </div>
+</div>
+<div class="row">
+  <label>To:</label>
+  <div class="select">
+    {{#power-select disabled=(not sourceTaxonomyIsSelected) renderInPlace=true options=sortedTargetTaxonomies searchField="preflabel" selected=targetTaxonomy onchange=(action "selectTargetTaxonomy") as |taxonomy|}}
+      {{taxonomy.preflabel}}
+      {{#if taxonomy.version}}
+        - {{taxonomy.version}}
+      {{/if}}
+    {{/power-select}}
+  </div>
+</div>
+<div class="row actions">
+  {{#unless isSaving}}
+    <button type="button" name="submit" class="btn submit{{if (not isAllowed) ' disabled'}}" disabled= {{not isAllowed}} {{action "createEffort"}}>Create</button>
+    <button type="button" name="cancel" class="btn cancel" {{action "closeWindow"}}>Cancel</button>
+    {{else}}
+      <div class="saving">
+        <i class="fa fa-cog fa-spin fa-3x fa-fw"></i> Saving...
+      </div>
+  {{/unless}}
+</div>

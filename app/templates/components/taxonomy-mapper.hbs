@@ -1,0 +1,18 @@
+<div class="header">
+  <span class="switcher" {{action "switchHierarchies"}}>
+    <i class="fa fa-exchange" title="switch classification"></i>
+  </span>
+
+  <div class="title">
+    <div class="tax-title">
+      <span class="version">{{fromTaxonomy.version}}</span>
+      <label>{{fromTaxonomy.preflabel}}</label>
+    </div>
+    <div class="seperator"></div>
+    <div class="tax-title">
+      <span class="version">{{toTaxonomy.version}}</span>
+      <label>{{toTaxonomy.preflabel}}</label>
+    </div>
+  </div>
+</div>
+{{taxonomy-browser taxonomy=fromTaxonomy activateItem="activateItem" searchPlaceholder="Filter..." filterTypes=filters baseConfig=config showFilter=showFilter}}

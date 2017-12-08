@@ -1,0 +1,358 @@
+$lightgray: 	#D3D3D3;
+$gray:			#A4A4A4;
+$darkgray:		#808080;
+$green: 		#008000;
+$lightgreen:	#39D339;
+$orange:		#FF8953;
+$red: 			#FF0000;
+$blue: 			#0492D0;
+$brown:			#BDA355;
+$chart_blue:	#048CC8;
+$chart_green:	#42BA1D;
+$chart_red:		#CE4233;
+$chart_yellow:	#E6D501;
+
+
+@font-face {
+	font-family: 'esco';
+	src:url('fonts/esco.ttf?8b80t1') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 300;
+  font-style: normal;
+  src: url('fonts/Source-Sans-Pro-300/Source-Sans-Pro-300.eot');
+  src: url('fonts/Source-Sans-Pro-300/Source-Sans-Pro-300.eot?#iefix') format('embedded-opentype'),
+       local('Source Sans Pro Light'),
+       local('Source-Sans-Pro-300'),
+       url('fonts/Source-Sans-Pro-300/Source-Sans-Pro-300.woff2') format('woff2'),
+       url('fonts/Source-Sans-Pro-300/Source-Sans-Pro-300.woff') format('woff'),
+       url('fonts/Source-Sans-Pro-300/Source-Sans-Pro-300.ttf') format('truetype'),
+       url('fonts/Source-Sans-Pro-300/Source-Sans-Pro-300.svg#SourceSansPro') format('svg');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 400;
+  font-style: normal;
+  src: url('fonts/Source-Sans-Pro-regular/Source-Sans-Pro-regular.eot');
+  src: url('fonts/Source-Sans-Pro-regular/Source-Sans-Pro-regular.eot?#iefix') format('embedded-opentype'),
+       local('Source Sans Pro'),
+       local('Source-Sans-Pro-regular'),
+       url('fonts/Source-Sans-Pro-regular/Source-Sans-Pro-regular.woff2') format('woff2'),
+       url('fonts/Source-Sans-Pro-regular/Source-Sans-Pro-regular.woff') format('woff'),
+       url('fonts/Source-Sans-Pro-regular/Source-Sans-Pro-regular.ttf') format('truetype'),
+       url('fonts/Source-Sans-Pro-regular/Source-Sans-Pro-regular.svg#SourceSansPro') format('svg');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  font-style: normal;
+  src: url('fonts/Source-Sans-Pro-600/Source-Sans-Pro-600.eot');
+  src: url('fonts/Source-Sans-Pro-600/Source-Sans-Pro-600.eot?#iefix') format('embedded-opentype'),
+       local('Source Sans Pro Semibold'),
+       local('Source-Sans-Pro-600'),
+       url('fonts/Source-Sans-Pro-600/Source-Sans-Pro-600.woff2') format('woff2'),
+       url('fonts/Source-Sans-Pro-600/Source-Sans-Pro-600.woff') format('woff'),
+       url('fonts/Source-Sans-Pro-600/Source-Sans-Pro-600.ttf') format('truetype'),
+       url('fonts/Source-Sans-Pro-600/Source-Sans-Pro-600.svg#SourceSansPro') format('svg');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 700;
+  font-style: normal;
+  src: url('fonts/Source-Sans-Pro-700/Source-Sans-Pro-700.eot');
+  src: url('fonts/Source-Sans-Pro-700/Source-Sans-Pro-700.eot?#iefix') format('embedded-opentype'),
+       local('Source Sans Pro Bold'),
+       local('Source-Sans-Pro-700'),
+       url('fonts/Source-Sans-Pro-700/Source-Sans-Pro-700.woff2') format('woff2'),
+       url('fonts/Source-Sans-Pro-700/Source-Sans-Pro-700.woff') format('woff'),
+       url('fonts/Source-Sans-Pro-700/Source-Sans-Pro-700.ttf') format('truetype'),
+       url('fonts/Source-Sans-Pro-700/Source-Sans-Pro-700.svg#SourceSansPro') format('svg');
+}
+
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*, *:before, *:after {
+	@include box-sizing(border-box);
+	line-height: 1;
+}
+
+*:before, *:after {
+	font-family: 'FontAwesome';
+	font-style: normal;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #F2F2F2;
+    zoom: 100%;
+	@include font-size(1.6);
+}
+
+img {
+	border: none;
+	outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	font-size: 100%;
+}
+
+ul, ol {
+	list-style: none;
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+input {
+	border: none;
+    padding: 10px;
+	font-family: 'Source Sans Pro', sans-serif;
+	@include box-shadow(inset 0 0 0 1000px #FFF);
+	@include border-radius(5px);
+    @include font-size(1.6);
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0 1000px #FFF;
+}
+
+input[type=radio] {
+	@include box-shadow(none);
+}
+
+button {
+	border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+	font-family: 'Source Sans Pro', sans-serif;
+    @include font-size(1.4);
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    outline: none;
+    cursor: pointer;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+select:-ms-expand {
+    display: none;
+}
+
+textarea {
+	border: none;
+    padding: 10px;
+    width: 100%;
+	height: 100%;
+    font-family: 'Source Sans Pro', sans-serif;
+	@include border-radius(5px);
+    @include font-size(1.6);
+}
+
+/* Default classes */
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clearfix:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.btn {
+	background-color: $blue;
+	color: #FFF;
+	padding: 7px 20px 8px;
+	display: inline-block;
+	font-weight: 500;
+	cursor: pointer;
+	@include border-radius(3px);
+	@include font-size(1.6);
+}
+
+.ember-power-select-dropdown {
+	border-right: 1px solid #EEE;
+	border-left: 1px solid #EEE;
+	@include box-shadow(0 0 25px -5px #999);
+}
+
+.ember-power-select-trigger {
+	padding: 0 36px 0 8px;
+	cursor: pointer;
+	border: 1px solid #DDD;
+	min-height: 30px;
+	outline: none;
+	@include ellipsis;
+
+	&:focus {
+		border: 1px solid #DDD;
+	}
+}
+
+.ember-power-select-trigger[aria-disabled=true] {
+	background-color: transparent;
+	cursor: default;
+	@include opacity(.3);
+}
+
+.ember-basic-dropdown-trigger[aria-expanded="true"] {
+	.ember-power-select-status-icon {
+		@include transform(none);
+
+		&:after {
+			content: "\f106";
+		}
+	}
+}
+
+.ember-power-select-status-icon {
+	border: none;
+	margin: 0;
+    position: static;
+
+	&:after {
+	    content: "\f107";
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    color: $blue;
+	    margin: 2px 5px 0 0;
+	    padding: 0 5px 0 0;
+	    z-index: 0;
+	    @include font-size(2.8);
+	}
+}
+
+.ember-power-select-dropdown.ember-basic-dropdown--above,
+.ember-power-select-dropdown.ember-basic-dropdown--below,
+.ember-basic-dropdown--in-place .ember-power-select-dropdown {
+	border: none;
+	min-width: 130px !important;
+}
+
+.ember-power-select-search {
+	input {
+		padding: 5px;
+		outline: none;
+		border: 1px solid #DDD;
+		@include border-radius(3px);
+		@include font-size(1.4);
+	}
+}
+
+.ember-power-select-option {
+	padding: 5px 8px;
+
+	&.ember-power-select-option--no-matches-message {
+		color: $darkgray;
+		font-style: italic;
+		@include font-size(1.4);
+	}
+}
+
+.input-box,
+.textarea-box {
+    position: relative;
+    display: inline-block;
+
+    i {
+    	position: absolute;
+	    top: 0;
+	    right: 0;
+	    margin: 5px 5px 0 0;
+	    padding: 6px;
+	    color: #CCC;
+	    cursor: pointer;
+
+		&:hover {
+			color: $blue;
+		}
+    }
+}
+
+.textarea-box {
+	display: block;
+}
+
+@include keyframes(glow) {
+	0% {
+		@include box-shadow(0 0 15px -7px #0492D0);
+	}
+	50% {
+		@include box-shadow(0 0 30px -7px #0492D0);
+	}
+	100% {
+		@include box-shadow(0 0 15px -7px #0492D0);
+	}
+}
+
+@include keyframes(showAnimation) {
+  0% {
+    @include transform(scaleY(0.1));
+  }
+  40% {
+    @include transform(scaleY(1.04));
+  }
+  60% {
+    @include transform(scaleY(0.98));
+  }
+  80% {
+    @include transform(scaleY(1.04));
+  }
+  100% {
+    @include transform(scaleY(0.98));
+  }
+  80% {
+    @include transform(scaleY(1.02));
+  }
+  100% {
+    @include transform(scaleY(1));
+  }
+}
+@include keyframes(hideAnimation) {
+  0% {
+    @include transform(scaleY(1));
+  }
+  60% {
+    @include transform(scaleY(0.98));
+  }
+  80% {
+    @include transform(scaleY(1.02));
+  }
+  100% {
+    @include transform(scaleY(0));
+  }
+}

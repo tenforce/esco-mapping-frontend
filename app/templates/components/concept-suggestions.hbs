@@ -1,0 +1,30 @@
+{{#if isLoading}}
+    <div class="loading">
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+    </div>
+{{else}}
+    <div class="clearfix"></div>
+
+    {{#if displaySuggestions}}
+        <div class="options">
+            <!--<div class="sorter">
+                <span>Sort on : </span>
+                {{!#power-select options=sortTypes searchField="label" selected=sortType onchange=(action (mut sortType))
+                as |sortType|}}
+                    {{!sortType.label}}
+                {{!/power-select}}
+            </div>-->
+            <i class="fa {{if (eq user.showCompletedSuggestions 'yes') 'fa-toggle-on' 'fa-toggle-off'}}" {{action 'toggleCompletedSuggestions'}}></i>
+            <span>{{#if (eq user.showCompletedSuggestions 'yes')}}Hidden results are shown{{else}}Hidden results are not shown{{/if}}</span>
+        </div>
+
+        <ul>
+            {{#each sortedSuggestions as |suggestion|}}
+                {{concept-suggestion suggestion=suggestion acceptSuggestion="acceptSuggestion" rejectSuggestion="rejectSuggestion"
+            hideCompletedSuggestions=hideCompletedSuggestions}}
+            {{/each}}
+        </ul>
+    {{else}}
+        <div class="feedback-message">No suggestions for this concept.</div>
+    {{/if}}
+{{/if}}

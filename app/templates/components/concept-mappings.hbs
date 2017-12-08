@@ -1,0 +1,22 @@
+<div class="title">
+  <h3>Mapped Concepts</h3>
+  {{#if (is-pending mappingsLength)}}
+    <span class="mapped-count" title="number of mappings">0</span>
+  {{else}}
+    <span class="mapped-count" title="number of mappings">{{await mappingsLength}}</span>
+  {{/if}}
+</div>
+
+<div class="content {{if (and (await mappingsLength) fullDetail) 'details'}}">
+  <ul class="mapping-list">
+    {{#each (await mappings) as |mapping|}}
+      {{concept-mapping origin=concept mapping=mapping}}
+    {{/each}}
+  </ul>
+</div>
+
+{{#if (await mappingsLength)}}
+  <div class="btn-toggle-more" {{action "toggleDetail"}} title={{toggleTooltip}}>
+    <i class="fa fa-angle-down"></i>
+</div>
+{{/if}}

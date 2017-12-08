@@ -1,0 +1,17 @@
+<div class="select-effort">
+    {{#if userIsAdmin}}
+        <div class="create-effort">
+            <button class="create" id="effort-create-button" {{action "toggleCreateEffort"}}>Create new effort</button>
+            {{#if displayCreateEffort}}
+                {{#tether-dialog close='toggleCreateEffort' hasOverlay=false clickOutsideToClose=true target='#effort-create-button'
+                targetAttachment='bottom middle' attachment='top middle' }}
+                    {{create-effort closeWindow="toggleCreateEffort"}}
+                {{/tether-dialog}}
+            {{/if}}
+        </div>
+    {{/if}}
+
+    <div class="map-effort">
+        {{select-effort taxonomiesSelected="taxonomiesSelected"}}
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="admin-area">
+    <div class="left"></div>
+    <div class="right">
+        <div class="profile-detail">
+            <form class="form profile-form" {{action "updateProfile" on="submit"}}>
+                {{#if user}}
+                    <div class="section">
+                        <div class="title">Personal information</div>
+                        <div class="values">
+                            <label>Name</label>
+                            {{input value=username class=(if (not isDataValid) "input highlight" "input")}}
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="title">Settings</div>
+                        <div class="options" {{action 'toggleConceptDetails'}}>
+                          <i class="fa {{if (eq user.showDetails 'yes') 'fa-toggle-on' 'fa-toggle-off'}}"></i> Show concept details by default
+                        </div>
+                        <div class="options" {{action 'toggleConceptMappings'}}>
+                          <i class="fa {{if (eq user.showMappings 'yes') 'fa-toggle-on' 'fa-toggle-off'}}"></i> Show concept mappings by default
+                        </div>
+                        <div class="options" {{action 'toggleHierarchyFilters'}}>
+                          <i class="fa {{if (eq user.showFilter 'yes') 'fa-toggle-on' 'fa-toggle-off'}}"></i> Show hierarchy filters by default
+                        </div>
+                        <div class="options" {{action 'toggleCompletedSuggestions'}}>
+                          <i class="fa {{if (eq user.showCompletedSuggestions 'yes') 'fa-toggle-on' 'fa-toggle-off'}}"></i> Show suggestions
+                            after accepting / hiding them
+                        </div>
+                    </div>
+                    <button class="btn {{if (not isDataValid) 'disabled'}}" {{action "saveProfile"}} disabled={{not
+                    isDataValid}}>Save</button>
+                {{else}}
+                    <div class="loading-app">
+                        <i class="fa fa-spinner fa-pulse fa-2x"></i>
+                    </div>
+                {{/if}}
+            </form>
+        </div>
+    </div>
+</div>

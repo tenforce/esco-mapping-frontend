@@ -1,0 +1,27 @@
+<div class="mapping-effort">
+    <label>Select an existing mapping effort:</label>
+    {{#power-select disabled=disabled options=sortedEfforts searchField="label" selected=effort onchange=(action "selectEffort") as |effort|}}
+        {{effort.label}}
+    {{/power-select}}
+</div>
+<div class="from-to">
+    <div>
+        <span class="label">From:</span>
+        <span class="value">
+          {{from.preflabel}}
+          {{#if from.version}}
+            - {{from.version}}
+          {{/if}}
+        </span>
+    </div>
+    <div>
+        <span class="label">To:</span>
+        <span class="value">
+          {{to.preflabel}}
+          {{#if to.version}}
+            - {{to.version}}
+          {{/if}}
+        </span>
+    </div>
+</div>
+<button type="button" name="submit" class="btn submit{{if (not isAllowed) ' disabled'}}" disabled={{not isAllowed}} {{action "selectTaxonomies"}}>Go</button>
